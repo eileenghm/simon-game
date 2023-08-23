@@ -21,6 +21,11 @@ $(".btn").click(function() {
     //get clicked button id
     var userChosenColour = $(this).attr("id");
     userClickedPattern.push(userChosenColour);
+
+    playSound(userChosenColour);
+    animatePress(userChosenColour);
+
+    checkAnswer(userClickedPattern.length - 1);
 });
 
 function nextSequence() {
@@ -48,9 +53,8 @@ function playSound(name) {
 //add animation to clicks
 function animatePress(currentColour) {
     $("#" + currentColour).addClass("pressed"); //add shadow
-    //remove effect after 10seconds
     setTimeout(function () {
-        $("#" + currentColor).removeClass("pressed");
+        $("#" + currentColour).removeClass("pressed");
       }, 100);
 }
 
